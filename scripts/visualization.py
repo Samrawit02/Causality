@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
+from causalnex.plots import plot_structure, NODE_STYLE, EDGE_STYLE
 from IPython.display import Markdown, display, Image, display_html
 
 
@@ -26,3 +27,11 @@ def plot_correlation(x):
     heatmap.set_title('Correlation between features',
                       fontdict={'fontsize': 15}, pad=12)
     fig.show()
+
+def vis_sm(sm):
+  viz = plot_structure(
+      sm,
+      graph_attributes={"scale": "2.0", 'size': 2.5},
+      all_node_attributes=NODE_STYLE.WEAK,
+      all_edge_attributes=EDGE_STYLE.WEAK)
+  return Image(viz.draw(format='png'))
