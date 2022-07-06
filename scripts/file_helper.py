@@ -11,7 +11,7 @@ class FileHelper:
     def to_csv(self, df, csv_path, index=False):
         try:
             df.to_csv(csv_path, index=index)
-            self.logger.info(f'Csv file saved in {csv_path}.')
+            # self.logger.info(f'Csv file saved in {csv_path}.')
 
         except Exception:
             self.logger.exception('File saving failed.')
