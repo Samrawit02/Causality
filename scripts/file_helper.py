@@ -1,7 +1,7 @@
 import pandas as pd
 import json
 from log import Logger
-import laspy
+
 
 class FileHelper:
 
@@ -11,7 +11,7 @@ class FileHelper:
     def to_csv(self, df, csv_path, index=False):
         try:
             df.to_csv(csv_path, index=index)
-            self.logger.info(f'Csv file saved in {csv_path}.')
+            # self.logger.info(f'Csv file saved in {csv_path}.')
 
         except Exception:
             self.logger.exception('File saving failed.')
@@ -34,18 +34,4 @@ class FileHelper:
 
         except FileNotFoundError:
             self.logger.exception('File not found.')
-    
-    def read_laz(self):
-        '''
-        Read Generated Las file
-        Return laspy read las file
-        '''
-        try:
-            print("Reading Las File from :", self.las_path)
-            las = laspy.read(self.las_path)
-            self.las_file = las
-            return las
-        
-        except FileNotFoundError:
-            print("Log: File Not found")
-            print("Please use the function run_pipe before this funciton")
+   
